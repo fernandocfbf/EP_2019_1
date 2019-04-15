@@ -1,11 +1,15 @@
-# EP 2019-1: Escape Insper
-#
-# Alunos: 
-# - aluno A: Fulano da Silva, fulanos@insper.edu.br
-# - aluno B: Sicrano de Almeida, sicranoa1@insper.edu.br
-
+import random
 def carregar_cenarios():
     cenarios = {
+        "dia anterior": {
+            'titulo': 'Dia do descanso',
+            'descricao' : 'Você está na sua casa',
+            'opcoes': {
+                'sala de estar': 'Assistir TV',
+                'quarto': 'ir até o seu quarto'
+            }
+        },
+                
         "inicio": {
             "titulo": "Saguao do perigo",
             "descricao": "Voce esta no saguao de entrada do insper",
@@ -37,7 +41,7 @@ def carregar_cenarios():
             }
         }
     }
-    nome_cenario_atual = "inicio"
+    nome_cenario_atual = "dia anterior"
     return cenarios, nome_cenario_atual
 
 
@@ -57,12 +61,45 @@ def main():
 
     game_over = False
     while not game_over:
+        Vida_P1 = 500
+        
         cenario_atual = cenarios[nome_cenario_atual]
-
-        # Aluno A: substitua este comentário pelo código para imprimir 
-        # o cenário atual.
-
         opcoes = cenario_atual['opcoes']
+        descricao = cenario_atual['descricao']
+        titulo = cenario_atual['titulo'] 
+        print(titulo)
+        print('-----------------')
+        print(descricao)
+        print(opcoes)
+        pergunta1 = input('Dessa opções o que você deseja fazer?')
+        
+        if pergunta1 == 'Assistir TV':
+            print('Você está no sofá assistindo TV e encontrou o "BOSS DO SONO". Você deve enfrenta-lo para não cair no sono e deixar de fazer o EP')
+            print('Seu HP: 500')
+            print('BOSS DO SONO HP: 100')
+            Vida_BOSS_DO_SONO = 100
+            ataqueBOOS_DO_SONO = 251
+            ataque_P1 = random.randint(0,1)
+            print('Encare o desafio! É sua vez, você atingiu seu oponente com', ataque_P1, 'ponto de ataque')
+            Vida_BOSS_DO_SONO -= ataque_P1
+            print('BOSS DO SONO HP:', Vida_BOSS_DO_SONO) 
+            print('Sofra as consequências! Você foi ferido por', ataqueBOOS_DO_SONO, 'pontos de ataque')
+            if ataqueBOOS_DO_SONO > 250:
+                print('Você não resistiu e caiu no sono')
+            
+            
+          
+            
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
@@ -84,3 +121,4 @@ def main():
 # Programa principal.
 if __name__ == "__main__":
     main()
+    
