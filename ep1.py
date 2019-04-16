@@ -61,32 +61,16 @@ def main():
 
     game_over = False
     while not game_over:
-        Vida_P1 = 500
+        Vida_P1 = 500 
+        inventário = []
         
         cenario_atual = cenarios[nome_cenario_atual]
         opcoes = cenario_atual['opcoes']
         descricao = cenario_atual['descricao']
         titulo = cenario_atual['titulo'] 
+        print()
         print(titulo)
-        print('-----------------')
         print(descricao)
-        print(opcoes)
-        pergunta1 = input('Dessa opções o que você deseja fazer?')
-        
-        if pergunta1 == 'Assistir TV':
-            print('Você está no sofá assistindo TV e encontrou o "BOSS DO SONO". Você deve enfrenta-lo para não cair no sono e deixar de fazer o EP')
-            print('Seu HP: 500')
-            print('BOSS DO SONO HP: 100')
-            Vida_BOSS_DO_SONO = 100
-            ataqueBOOS_DO_SONO = 251
-            ataque_P1 = random.randint(0,1)
-            print('Encare o desafio! É sua vez, você atingiu seu oponente com', ataque_P1, 'ponto de ataque')
-            Vida_BOSS_DO_SONO -= ataque_P1
-            print('BOSS DO SONO HP:', Vida_BOSS_DO_SONO) 
-            print('Sofra as consequências! Você foi ferido por', ataqueBOOS_DO_SONO, 'pontos de ataque')
-            if ataqueBOOS_DO_SONO > 250:
-                print('Você não resistiu e caiu no sono')
-            
             
           
             
