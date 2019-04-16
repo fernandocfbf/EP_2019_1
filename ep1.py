@@ -5,11 +5,20 @@ def carregar_cenarios():
             'titulo': 'Dia do descanso',
             'descricao' : 'Você está na sua casa',
             'opcoes': {
+                'cozinha': 'comer alguma porcaria',    
                 'sala de estar': 'Assistir TV',
-                'quarto': 'ir até o seu quarto'
+                'quarto': 'dormir'
             }
         },
-                
+        "manhã do novo dia":{
+            'titulo':  'A jornada',
+            'descricao' : 'Você acordou, já se arrumou e está na rua iniciando sua jornada até o Insper',
+            'opcoes': {
+                'chamar um uber': 'pegar o celular',
+                'tentar o busao': 'continuar ir até o ponto'
+            }
+         },   
+                            
         "inicio": {
             "titulo": "Saguao do perigo",
             "descricao": "Voce esta no saguao de entrada do insper",
@@ -72,20 +81,48 @@ def main():
         print(titulo)
         print(descricao)
         
-        print('Suas opções são: "Ir para a sala" e "Ir para a cozinha".')    
+        print('Suas opções são: "Ir para a sala", "Ir para a cozinha" ou "Ir para o quarto".')    
         pergunta1 = input('Dessa opções, digite o que você deseja fazer: ')
         
-        while pergunta1 != 'Ir para a sala' and pergunta1 != 'Ir para a cozinha':
+        while pergunta1 != 'Ir para a sala' and pergunta1 != 'Ir para a cozinha' and pergunta1 != 'Ir para o quarto':
             pergunta1 = input('Resposta inválida, digite algo dentro das opções citadas: ')
             
         if pergunta1 == 'Ir para a sala':
-            pergunta2 = input('Você está na sala de estar, o que deseja fazer: enrolar e assistir TV ou fazer o EP? ' )
+            pergunta1_1 = input('Você está na sala de estar, o que deseja fazer: enrolar e assistir TV ou fazer o EP? ' )
             
-            while pergunta2 != 'enrolar e assistir TV' and pergunta2 != 'fazer o EP':
-                pergunta2 = input('Resposta inválida, digite algo dentro das opções citadas: ')
+            while pergunta1_1 != 'enrolar e assistir TV' and pergunta1_1 != 'fazer o EP':
+                pergunta1_1 = input('Resposta inválida, digite algo dentro das opções citadas: ')
   
+        elif pergunta1 == 'Ir para a cozinha':
+            pergunta1_2 = input('Você está na cozinha, o que deseja fazer: comer alguma porcaria ou fazer o EP?')
+        
+            while pergunta1_2!= 'comer alguma porcaria' and pergunta1_2 != 'fazer o EP':
+                pergunta1_2 = input ('Resposta inválida, digite algo dentro das opções citadas')
+        
+        elif pergunta1 == 'Ir para o quarto':
+            pergunta1_3 = input('Você está no quarto, o que deseja fazer: dormir ou fazer o EP?')
             
+            while pergunta1_3 != 'dormir' and pergunta1_3 != 'fazer o EP':
+                pergunta1_3 = input('Resposta inválida, digite algo dentro das opções:')
+        
+        print ('Suas opções são:"chamar um uber" ou "tentar o busao"')
+        pergunta2 = input('Dessas opções, digite o que você deseja fazer:')
+        
+        while pergunta2 != 'chamar um uber' and pergunta2 != 'tentar o busao':
+            pergunta2 = input('Resposta inválida, digite algo dentro das opções citadas:')
+        
+        if pergunta2 == 'tentar o busao':
+            pergunta2_1 = input('Você está indo para o ponto, o que deseja fazer: continuar ir até o ponto ou tentar ir apé até o Insper')
+        
+            while pergunta2_1 != 'continuar ir até o ponto' and pergunta2_1 != 'tentar ir apé até o Insper':
+                pergunta2_1 = input('Resposta inválida, digite algo dentro das opções citadas:')
+        
+        if pergunta2 == 'chamar um uber':
+            pergunta2_2 = input('Você vai chamar o uber, o que você deseja: pegar o celular ou tentar ir apé até o Insper:')
             
+            while pergunta2_2 != 'pegar o celular' and pergunta2_2 != 'tentar ir apé até o Insper':
+                pergunta2_2 = input('Resposta inválida, digite algo dentro das opções:')
+                
         
         
         
