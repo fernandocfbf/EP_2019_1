@@ -71,8 +71,19 @@ def main():
         print()
         print(titulo)
         print(descricao)
+        
+        print('Suas opções são: "Ir para a sala" e "Ir para a cozinha".')    
+        pergunta1 = input('Dessa opções, digite o que você deseja fazer: ')
+        
+        while pergunta1 != 'Ir para a sala' and pergunta1 != 'Ir para a cozinha':
+            pergunta1 = input('Resposta inválida, digite algo dentro das opções citadas: ')
             
-          
+        if pergunta1 == 'Ir para a sala':
+            pergunta2 = input('Você está na sala de estar, o que deseja fazer: enrolar e assistir TV ou fazer o EP? ' )
+            
+            while pergunta2 != 'enrolar e assistir TV' and pergunta2 != 'fazer o EP':
+                pergunta2 = input('Resposta inválida, digite algo dentro das opções citadas: ')
+  
             
             
         
