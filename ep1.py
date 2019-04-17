@@ -117,5 +117,32 @@ def main():
         print(cenario_atual['titulo'])
         print(len(cenario_atual['titulo'])*'-')
         print(cenario_atual['descricao'])
+        
+        opcoes = cenario_atual['opcoes']
+        if len(opcoes) == 0:
+            print("Acabaram-se suas opções! Mwo mwo mwooooo...")
+            game_over = True
+            
+        else:
+
+            print('suas opções:')
+            for e,i in opcoes.items():
+                print('{0}:{1}'.format(e,i))
+            escolha = input("Digite a sua escolha: ")
+
+            if escolha in opcoes:
+                nome_cenario_atual = escolha
+            else:
+                print("Sua indecisão foi sua ruína!")
+                game_over = True
+
+    print("Você morreu!")
+
+
+    # Programa principal.
+if __name__ == "__main__":
+    main()
+    
+    
     
     
