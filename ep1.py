@@ -115,9 +115,9 @@ def main():
                 if perguntaCombate1 == 'Atacar':
                     print('--------Seu turno--------')
                     ataque_P1 = random.randint(0,20)
-                    ataque_P1_valor = ataque(ataque_P1)
+                    ataque_P1_mensagem = ataque(ataque_P1)
                     Vida_Sleep_Monster -= ataque_P1
-                    print(ataque_P1_valor)
+                    print(ataque_P1_mensagem)
                     print('HIT:',ataque_P1)
                     print('Sleep monster HP:', Vida_Sleep_Monster)
                     print('Seu HP:', Vida_P1)
@@ -166,9 +166,9 @@ def main():
                         
                     if perguntaCombate2 == 'Atacar':
                         ataque_P1 = random.randint(0,20)
-                        ataque_P1_valor = ataque(ataque_P1)
+                        ataque_P1_mensagem = ataque(ataque_P1)
                         Vida_Sleep_Monster -= ataque_P1
-                        print('Você o atingiu com um soco esmagador!')
+                        print(ataque_P1_mensagem)
                         print('HIT:',ataque_P1)
                         print('Sleep monster HP:', Vida_Sleep_Monster)
                         print('Seu HP:', Vida_P1)
@@ -195,9 +195,9 @@ def main():
                 
                 if perguntaCombate2 == 'Atacar':
                     ataque_P1 = random.randint(0,20)
-                    ataque_P1_valor = ataque(ataque_P1)
+                    ataque_P1_mensagem = ataque(ataque_P1)
                     Vida_Sleep_Monster -= ataque_P1
-                    print('Você o atingiu com um soco esmagador!')
+                    print(ataque_P1_mensagem)
                     print('HIT:',ataque_P1)
                     print('Sleep monster HP:', Vida_Sleep_Monster)
                     print('Seu HP:', Vida_P1)
