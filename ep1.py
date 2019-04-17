@@ -1,4 +1,16 @@
 import random
+
+def ataque(ataque):
+    ataque_P1 = random.randint(0,20) 
+    if ataque_P1 == 0:
+        RespostaAtaque = 'Você errou'
+    elif ataque_P1 < 15:
+        RespostaAtaque = 'Você o atingiu com um soco esmagador!'
+    else:
+        RespostaAtaque = 'Ataque crítico!'
+    return RespostaAtaque
+    
+
 def carregar_cenarios():
     cenarios = {
         "dia anterior": {
@@ -78,76 +90,97 @@ def main():
         descricao = cenario_atual['descricao']
         titulo = cenario_atual['titulo'] 
         print()
-        print(titulo)
+        print('--------',titulo,'--------')
+        print('-' * len(titulo))
         print(descricao)
         
         Vida_Sleep_Monster = 100
         Ataque_Sleep_Monster = 251
         
-        print('Suas opções são: "Ir para a sala", "Ir para a cozinha" ou "Ir para o quarto"')   
-        pergunta1 = input('Dessa opções, digite o que você deseja fazer: ')
+        print('Suas opções são: \n "Ir para a sala" \n "Ir para a '
+        'cozinha" \n "Ir para o quarto"')   
+        pergunta1 = input('Dessas opções, digite o que você deseja fazer: ')
         
         while pergunta1 != 'Ir para a sala' and pergunta1 != 'Ir para a cozinha' and pergunta1 != 'Ir para o quarto':
             pergunta1 = input('Resposta inválida, digite algo dentro das opções citadas: ')
             
         if pergunta1 == 'Ir para a sala':
-            pergunta1_1 = input('Você está na sala de estar, o que deseja fazer: enrolar e assistir TV ou fazer o EP? ' )
+            pergunta1_1 = input('Você está na sala de estar, ' 
+            'você pode: \n "Enrolar e assistir TV" \n "Fazer o EP" \n '
+            'Dessas opções, digite o que você deseja fazer: ' )
             
-            while pergunta1_1 != 'enrolar e assistir TV' and pergunta1_1 != 'fazer o EP':
-                pergunta1_1 = input('Resposta inválida, digite algo dentro das opções citadas: ')
+            while pergunta1_1 != 'Enrolar e assistir TV' and pergunta1_1 != 'Fazer o EP':
+                pergunta1_1 = input('Resposta inválida, '
+                'digite algo dentro das opções citadas: ')
                 
-            if pergunta1_1 == 'enrolar e assistir TV':
-                print('Você está no sofá assistindo TV e encontrou o "Sleep Monster". Você deve enfrenta-lo para não cair no sono e deixar de fazer o EP')
+            if pergunta1_1 == 'Enrolar e assistir TV':
+                print('Você está no sofá assistindo TV e encontrou o "Sleep Monster". '
+                'Você deve enfrenta-lo para não cair no sono e deixar de fazer o EP')
                 print('----------COMBATE----------')
                 print('Seu HP: 500')
                 print('Sleep Monster HP: 100')
-                perguntaCombate1 = input('Você deseja "atacar" ou "fugir"? ')
+                perguntaCombate1 = input('Você pode: \n "Atacar" \n "Fugir" \n '
+                'Dessas opções, digite o que você deseja fazer: ' )
                     
-                while perguntaCombate1 != 'atacar' and perguntaCombate1 != 'fugir':
-                    perguntaCombate1 = input('Resposta inválida, digite algo dentro das opções citadas: ')
+                while perguntaCombate1 != 'Atacar' and perguntaCombate1 != 'Fugir':
+                    perguntaCombate1 = input('Resposta inválida, digite algo '
+                    'dentro das opções citadas: ')
                     
-                if perguntaCombate1 == 'atacar':
+                if perguntaCombate1 == 'Atacar':
                     print('--------Seu turno--------')
                     ataque_P1 = random.randint(0,20)
+                    ataque_P1_valor = ataque(ataque_P1)
                     Vida_Sleep_Monster -= ataque_P1
-                    print('Você o atingiu com um soco esmagador!')
+                    print(ataque_P1_valor)
                     print('HIT:',ataque_P1)
                     print('Sleep monster HP:', Vida_Sleep_Monster)
                     print('Seu HP:', Vida_P1)
                     print('--------Turno do adversário--------')
                     print('Você foi gravemente ferido!')
                     print('HIT:', Ataque_Sleep_Monster)
-                    print('Você não resistiu e caiu em um sono profundo, sofra as consequências!')
+                    print('Você não resistiu e caiu em um sono profundo, '
+                    'sofra as consequências!')
                     
                 else: 
                     print('Você tentou fugir, mas não deu tempo... sofra as consequências!')
                 
-            elif pergunta1_1 == 'fazer o EP':
+            elif pergunta1_1 == 'Fazer o EP':
                 print('Você está determinado a fazer o EP, a introdução está feita,'
-                'falta o desenvolvimento e a conclusão, mas está passando master chef na TV e '
+                'falta o desenvolvimento e a conclusão, '
+                'mas está passando master chef na TV e '
                 'o EP terá de ficar para outra hora...')
                        
         elif pergunta1 == 'Ir para a cozinha':
-            pergunta1_2 = input('Você está na cozinha, o que deseja fazer: "abrir a geladeira", "lavar a louça" ou "fazer o EP?"')
+            pergunta1_2 = input('Você está na cozinha, '
+            'você pode: \n "Abrir a geladeira" \n "Lavar a louça" '
+            '\n "Fazer o EP" \n '
+            'Dessas opções, digite o que você deseja fazer: ')
         
-            while pergunta1_2!= 'abrir a geladeira' and pergunta1_2!= 'fazer o EP' and pergunta1_2!= 'lavar a louça':
-                pergunta1_2 = input ('Resposta inválida, digite algo dentro das opções citadas')
+            while pergunta1_2!= 'Abrir a geladeira' and pergunta1_2!= 'Fazer o EP' and pergunta1_2!= 'Lavar a louça':
+                pergunta1_2 = input ('Resposta inválida, '
+                'digite algo dentro das opções citadas')
                 
-            if pergunta1_2 == 'abrir a geladeira':
-                print('UAU!! Você encontrou um Mc lanche feliz, é melhor guarda-lo para depois.')
+            if pergunta1_2 == 'Abrir a geladeira':
+                print('UAU!! Você encontrou um Mc lanche feliz, '
+                'é melhor guarda-lo para depois.')
                 inventário.append('Mc lanche feliz')
-                pergunta1_2 = input('E agora o que deseja fazer: lavar a louça ou fazer o EP? ')
-                if pergunta1_2 == 'lavar a louça':                
+                pergunta1_2 = input('Agora você pode: \n '
+                '"Lavar a louça" \n "Fazer o EP" \n '
+                'Dessas opções, digite o que você deseja fazer: ')
+                if pergunta1_2 == 'Lavar a louça':                
         
-                    print('Você lavou a louça mas ficou muito cansado!'
+                    print('Você lavou a louça mas ficou muito cansado! '
                           'na sua frente surge um enorme monstro, é o Sleep Monster!')
                 
-                    perguntaCombate2 = input('Você deseja "atacar" ou "fugir"? ')
-                    while perguntaCombate2 != 'atacar' and perguntaCombate2 != 'fugir':
-                        perguntaCombate2 = input('Resposta inválida, digite algo dentro das opções citadas')
+                    perguntaCombate2 = input('Você pode: \n "Atacar" \n "Fugir" \n '
+                    'Dessas opções, digite o que você deseja fazer: ')
+                    while perguntaCombate2 != 'Atacar' and perguntaCombate2 != 'Fugir':
+                        perguntaCombate2 = input('Resposta inválida, '
+                        'digite algo dentro das opções citadas')
                         
-                    if perguntaCombate2 == 'atacar':
+                    if perguntaCombate2 == 'Atacar':
                         ataque_P1 = random.randint(0,20)
+                        ataque_P1_valor = ataque(ataque_P1)
                         Vida_Sleep_Monster -= ataque_P1
                         print('Você o atingiu com um soco esmagador!')
                         print('HIT:',ataque_P1)
@@ -156,22 +189,27 @@ def main():
                         print('--------Turno do adversário--------')
                         print('Você foi gravemente ferido!')
                         print('HIT:', Ataque_Sleep_Monster)
-                        print('Você não resistiu e caiu em um sono profundo, sofra as consequências!')
+                        print('Você não resistiu e caiu em um sono profundo, '
+                        'sofra as consequências!')
                             
                     else: 
-                        print('Você tentou fugir, mas não deu tempo... sofra as consequências!')
+                        print('Você tentou fugir, mas não deu tempo...'
+                        'sofra as consequências!')
                 
-            elif pergunta1_2 == 'lavar a louça':                
+            elif pergunta1_2 == 'Lavar a louça':                
         
                 print('Você lavou a louça mas ficou muito cansado!'
                 'na sua frente surge um enorme monstro, é o Sleep Monster!')
                 
-                perguntaCombate2 = input('Você deseja "atacar" ou "fugir"? ')
-                while perguntaCombate2 != 'atacar' and perguntaCombate2 != 'fugir':
-                    perguntaCombate2 = input('Resposta inválida, digite algo dentro das opções citadas')
+                perguntaCombate2 = input('Você deseja: \n "Atacar" \n "Fugir" \n '
+                'Dessas opções, digite o que você deseja fazer: ')
+                while perguntaCombate2 != 'Atacar' and perguntaCombate2 != 'Fugir':
+                    perguntaCombate2 = input('Resposta inválida, '
+                    'digite algo dentro das opções citadas')
                 
-                if perguntaCombate2 == 'atacar':
+                if perguntaCombate2 == 'Atacar':
                     ataque_P1 = random.randint(0,20)
+                    ataque_P1_valor = ataque(ataque_P1)
                     Vida_Sleep_Monster -= ataque_P1
                     print('Você o atingiu com um soco esmagador!')
                     print('HIT:',ataque_P1)
@@ -180,28 +218,33 @@ def main():
                     print('--------Turno do adversário--------')
                     print('Você foi gravemente ferido!')
                     print('HIT:', Ataque_Sleep_Monster)
-                    print('Você não resistiu e caiu em um sono profundo, sofra as consequências!')
+                    print('Você não resistiu e caiu em um sono profundo, '
+                    'sofra as consequências!')
                 
                 else: 
                     print('Você tentou fugir, mas não deu tempo... sofra as consequências!')
             
-            elif pergunta1_2 == 'fazer o EP':
+            elif pergunta1_2 == 'Fazer o EP':
                 print('Você está determinado a fazer o EP, a introdução está feita,'
-                'falta o desenvolvimento e a conclusão, mas está passando master chef na TV e '
+                'falta o desenvolvimento e a conclusão, '
+                'mas está passando master chef na TV e '
                 'o EP terá de ficar para outra hora...')
                 inventário.append('introdução')
         
         elif pergunta1 == 'Ir para o quarto':
-            pergunta1_4 = input('Você está no quarto, o que deseja fazer: dormir ou fazer o EP?')
+            pergunta1_4 = input('Você está no quarto, '
+            'você pode: \n "Dormir" \n "Fazer o EP" \n '
+            'Dessas opções, digite o que você deseja fazer: ')
             
-            while pergunta1_4 != 'dormir' and pergunta1_4 != 'fazer o EP':
+            while pergunta1_4 != 'Dormir' and pergunta1_4 != 'Fazer o EP':
                 pergunta1_4 = input('Resposta inválida, digite algo dentro das opções:')
             
-            if pergunta1_4 == 'dormir':
+            if pergunta1_4 == 'Dormir':
                 print('Você dormiu muito bem')
             else: 
                 print('Você está determinado a fazer o EP, a introdução está feita,'
-                'falta o desenvolvimento e a conclusão, mas está passando master chef na TV e '
+                'falta o desenvolvimento e a conclusão, '
+                'mas está passando master chef na TV e '
                 'o EP terá de ficar para outra hora...')
                 inventário.append('introdução')
                 
