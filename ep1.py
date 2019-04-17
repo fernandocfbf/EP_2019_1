@@ -26,42 +26,28 @@ def carregar_cenarios():
             'titulo':  'A jornada',
             'descricao' : 'Você acordou, já se arrumou e está na rua iniciando sua jornada até o Insper',
             'opcoes': {
-                'chamar um uber': 'pegar o celular ou tentar ir apé até o insper',
                 'tentar o busao': 'continuar e ir até o ponto ou tentar ir apé até o Insper'
             }
          },   
                             
-        "inicio": {
-            "titulo": "Saguao do perigo",
+        "Insper": {
+            "titulo": "A chegada",
             "descricao": "Voce esta no saguao de entrada do insper",
             "opcoes": {
-                "andar professor": "Tomar o elevador para o andar do professor",
-                "biblioteca": "Ir para a biblioteca"
+                "biblioteca": "Fazer o EP ou ",
+                "quarto andar": "Pegar a mala"
             }
         },
         "andar professor": {
-            "titulo": "Andar do desespero",
-            "descricao": "Voce chegou ao andar da sala do seu professor",
+            "titulo": "A batalha",
+            "descricao": "Voce chegou ao andar da sala do seu professor, TAN TAN TAN...",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada",
-                "professor": "Falar com o professor"
-            }
-        },
-        "professor": {
-            "titulo": "O monstro do Python",
-            "descricao": "Voce foi pedir para o professor adiar o EP. "
-                         "O professor revelou que é um monstro disfarçado "
-                         "e devorou sua alma.",
-            "opcoes": {}
-        },
-        "biblioteca": {
-            "titulo": "Caverna da tranquilidade",
-            "descricao": "Voce esta na biblioteca",
-            "opcoes": {
-                "inicio": "Voltar para o saguao de entrada"
+                "entregar EP": "Entregar o que foi feito",
+                "lutar": "Enfrentar o professor"
             }
         }
     }
+
     nome_cenario_atual = "dia anterior"
     return cenarios, nome_cenario_atual
 
@@ -90,7 +76,7 @@ def main():
         descricao = cenario_atual['descricao']
         titulo = cenario_atual['titulo'] 
         print()
-        print('--------',titulo,'--------')
+        print(titulo)
         print('-' * len(titulo))
         print(descricao)
         
@@ -257,7 +243,36 @@ def main():
         titulo = cenario_atual['titulo'] 
         print()
         print(titulo)
+        print('-' * len(titulo))
         print(descricao)
+        
+        cenario_atual = cenarios["Insper"]
+        opcoes = cenario_atual['opcoes']
+        descricao = cenario_atual['descricao']
+        titulo = cenario_atual['titulo'] 
+        print()
+        print(titulo)
+        print('-' * len(titulo))
+        print(descricao)
+        
+        cenario_atual = cenarios["Insper"]
+        opcoes = cenario_atual['opcoes']
+        descricao = cenario_atual['descricao']
+        titulo = cenario_atual['titulo'] 
+        print()
+        print(titulo)
+        print('-' * len(titulo))
+        print(descricao)
+        
+        cenario_atual = cenarios["andar professor"]
+        opcoes = cenario_atual['opcoes']
+        descricao = cenario_atual['descricao']
+        titulo = cenario_atual['titulo'] 
+        print()
+        print(titulo)
+        print('-' * len(titulo))
+        print(descricao)
+        
     
     
                 
