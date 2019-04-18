@@ -133,7 +133,7 @@ def main():
             if escolha == 'Big MC':
                 soma = 60
             elif escolha == 'gaytorade':
-                soma = 45
+                soma = 400
             elif escolha == 'energético':
                 soma = 20
             return soma
