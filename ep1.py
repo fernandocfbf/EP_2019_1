@@ -4,93 +4,13 @@
 # - aluno A: Fernando Fincatti, fernandocfbf@al.insper.edu.br
 # - aluno B: Pedro Celia, pedrodc1@al.insper.edu.br
 import random
-def carregar_cenarios():
-    cenarios = {
-        "dia anterior": {
-            'titulo': 'Dia do descanso',
-            'descricao' : 'Você está na sua casa',
-            'opcoes': {
-                'Ir para a cozinha': ' abrir a geladeira',    
-                'Ir para a sala de estar': ' enrolar e assistir TV ',
-                
-            }
-        },
-        "Ir para a cozinha":{
-            'titulo':  'Pico da alegria ',
-            'descricao' : 'Você encontrou um Big Mc, isso está no seu inventário agora',
-            'opcoes': {
-                'Ir para a sala de estar': ' voltar para a sala de estar'
-            }
-         },
-        "Ir para a sala de estar":{
-            'titulo':  'Pico do sossego',
-            'descricao' : 'Você está assistindo TV e encontrou o Sleep Monster, \n'
-            'se você perder o combate seu sono será horrivél e você acordará'
-            ' com menos HP pela manhã!',
-            'opcoes': {
-                'lutar': ' combate',
-                'fugir': ' sair correndo'
-            }
-        },
+import json
+
+with open('Dicionario.json', 'r', encoding="utf8") as arquivo:
+    dicionario = json.load(arquivo)
     
-        "lutar": {
-            "titulo": "A jornada",
-            "descricao": "Você acordou e está chegando no Insper",
-            "opcoes": {
-                "biblioteca": " pegar um livro",
-                "quarto andar": " pegar uma mala",
-                "andar professor": " ir para o andar do professor"
-            }
-        },
-        "fugir": {
-            "titulo": "Tiro de 100 metros",
-            "descricao": "Você correu e se escondeu no seu quarto"
-            ', em cima da mesa você encotrou um energético! Agora isso está'
-            ' no seu inventário.',
-            "opcoes": {
-                "lutar": " enfrentar o SleepMonster"
-                
-            }
-        },
-        "biblioteca": {
-            "titulo": "Pico da leitura",
-            "descricao": 'Você está na biblioteca e encontrou o "Magias pythonianas" \n'
-            'isso lhe deu um ataque mais poderoso!',
-            "opcoes": {
-                "andar professor": " ir para o andar do professor",
-                "quarto andar": " pegar uma mala"
-            }
-        },
-        "quarto andar": {
-            "titulo": "Pico de quem sabe",
-            "descricao": 'Você está no quarto andar e econtrou uma mala, dentro dela \n'
-            'havia um cheetos, agora isso está no seu iventário',
-            "opcoes": {
-                "andar professor": " ir para o andar do professor"
-            }
-        },
-        "andar professor": {
-            "titulo": "O conflito começa",
-            "descricao": "Voce chegou ao andar da sala do seu professor, TAN TAN TAN...",
-            "opcoes": {
-                "lutar contra o professor": " enfrentar o professor",
-                "encher linguiça": " pedir com jeitinho"
-            }
-        },
-        "encher linguiça": {
-            "titulo": "A discussão",
-            "descricao": "Você negociou, tentou, mas falhou, a luta agora é inevitável",
-            "opcoes": {
-                "lutar contra o professor": " enfrentar o professor",
-            }
-        },
-        "lutar contra o professor": {
-            "titulo": "A batalha final",
-            "descricao": "A porradaria começa",
-            "opcoes": {
-            }
-        }
-    }
+def carregar_cenarios():
+    cenarios = dicionario 
     nome_cenario_atual = "dia anterior"
     return cenarios, nome_cenario_atual
 
@@ -116,7 +36,7 @@ def main():
         
         vidaP1 = 100
         lista_ataque_P1 = ['Chutes mortais'] 
-        dicionario_de_alimentos = {}
+        inventario = []
         
         def define_valor_ataque(escolha):
             if escolha == 'Chutes mortais':
@@ -138,7 +58,17 @@ def main():
                 soma = 20
             return soma
             
-    
+        
+        if nome_cenario_atual == 'Ir para a cozinha':
+            inventario = ['Big MC']
+        elif nome_cenario_atual == 'fugir':
+            inventario[1] = 'energético'
+        elif nome_cenario_atual == 'Lutar' or nome_cenario_atual == 'Fugir':
+            inventario[2] = 'gaytorade'
+            
+            
+            
+            
         opcoes = cenario_atual['opcoes']
         
         if len(opcoes) == 0:
@@ -167,17 +97,17 @@ def main():
             print('COMBATE')
             print()
             while vidaP1 > 50 and vida_SleepMonster > 0:
-                while len(dicionario_de_alimentos) > 0: 
+                while len(inventario) > 0: 
                     print('SEU TURNO')
                     print()
                     comer = input('Antes de atacar, digite "sim" se '
                                   'você deseja comer alguma coisa ou "não" para continuar: ')
                     if comer == 'sim':
                         print('Você pode comer:')
-                        for e,i in dicionario_de_alimentos.items():
-                            print('{0}(x{1})'.format(e,i))
+                        for e in inventario:
+                            print(e)
                             comendo = input('Digite o que deseja comer: ')
-                        del dicionario_de_alimentos[comendo]
+                        del inventario[comendo]
                         if comendo == 'energético':
                             ataque_SleepMonster = random.randint(0,10)
                                 
@@ -225,17 +155,17 @@ def main():
             print('COMBATE')
             print()
             while vidaP1 > 50 and vida_Professor > 0:
-                while len(dicionario_de_alimentos) > 0: 
+                while len(inventario) > 0: 
                     print('SEU TURNO')
                     print()
                     comer = input('Antes de atacar, digite "sim" se '
                                   'você deseja comer alguma coisa ou "não" para continuar: ')
                     if comer == 'sim':
                         print('Você pode comer:')
-                        for e,i in dicionario_de_alimentos.items():
-                            print('{0}(x{1})'.format(e,i))
+                        for e in inventario:
+                            print('inventario[0]:(x1)')
                             comendo = input('Digite o que deseja comer: ')
-                        del dicionario_de_alimentos[comendo]
+                        del inventario[comendo]
                                 
                         somaVida = define_valor_alimentos(comendo)
                         vidaP1 += somaVida
