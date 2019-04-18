@@ -4,109 +4,110 @@
 # - aluno A: Fernando Fincatti, fernandocfbf@al.insper.edu.br
 # - aluno B: Pedro Celia, pedrodc1@al.insper.edu.br
 import random
-#import json
-#
-#with open('Dicionario.json', 'r', encoding="utf8") as arquivo:
-#    dicionario = json.loads(arquivo)
+import json
+
+with open('Dicionario.json', 'r', encoding="utf8") as arquivo:
+    dicionario = json.load(arquivo)
     
 def carregar_cenarios():
-    cenarios ={
-    "dia anterior": {
-            "titulo": "Dia do descanso",
-            "descricao" : "Você está na sua casa",
-            "opcoes": {
-                "Ir para a cozinha": "abrir a geladeira",    
-                "Ir para a sala de estar": "enrolar e assistir TV"   
-            }
-        },
-        "Ir para a cozinha":{
-            "titulo":  "Pico da alegria",
-            "descricao" : "Você encontrou um Big Mc, isso está no seu inventário agora",
-            "opcoes": {
-                "Ir para a sala de estar": " voltar para a sala de estar"
-            }
-        },
-        "Ir para a sala de estar":{
-            "titulo":  "Pico do sossego",
-            "descricao" : "Você está assistindo TV e encontrou o Sleep Monster, \n"
-            "se você perder o combate seu sono será horrivél e você acordará \n"
-            "com menos HP pela manhã!",
-            "opcoes": {
-                "lutar": "combate",
-                "fugir": "sair correndo"
-            }
-        },   
-        "lutar": {
-            "titulo": "A jornada",
-            "descricao": "Você acordou e está chegando no Insper",
-            "opcoes": {
-                "biblioteca": " pegar um livro",
-                "quarto andar": " pegar uma mala",
-                "andar professor": " ir para o andar do professor"
-            }
-        },
-        "fugir": {
-            "titulo": "Tiro de 100 metros",
-            "descricao": "Você correu e se escondeu no seu quarto, \n em cima da mesa você encotrou um energético! Agora isso está \n no seu inventário.",
-            "opcoes": {
-                "lutar": " enfrentar o SleepMonster"
-                
-            }
-        },
-        "biblioteca": {
-            "titulo": "Pico da leitura",
-            "descricao": "Você está na biblioteca e encontrou o Magias pythonianas \n isso lhe deu um ataque mais poderoso!",
-            "opcoes": {
-                "andar professor": " ir para o andar do professor",
-                "quarto andar": " pegar uma mala"
-            }
-        },
-        "quarto andar": {
-            "titulo": "Pico de quem sabe",
-            "descricao": "Você está no quarto andar e econtrou uma mala, dentro dela \n havia um gaytorade, TAN TAN TAN \n Você se deparou com a protetora Gio, ela não vai deixar \n você levar o gaytorade fácil assim",
-            "opcoes": {
-                "Lutar" : " combate",
-                "Fugir" : " sair correndo"
-            }
-        },
-        "Lutar": {
-            "titulo": "O começo do fim",
-            "descricao": "Depois do embate você se encontra no saguão",
-            "opcoes": {
-                "andar professor": "ir para o andar do professor",
-                "biblioteca" : "pegar um livro"
-            }
-        },
-        "Fugir": {
-            "titulo": "O começo do fim",
-            "descricao": "Depois do embate você se encontra no saguão, e felizmente você conseguiu correr rápido \n o suficiente para manter o seu gaytorade",
-            "opcoes": {
-                "andar professor": "ir para o andar do professor",
-                "biblioteca" : "pegar um livro"    
-            }
-        },  
-        "andar professor": {
-            "titulo": "O conflito começa",
-            "descricao": "Voce chegou ao andar da sala do seu professor, TAN TAN TAN...",
-            "opcoes": {
-                "lutar contra o professor": " enfrentar o professor",
-                "encher linguiça": " pedir com jeitinho"
-            }
-        },
-        "encher linguiça": {
-            "titulo": "A discussão",
-            "descricao": "Você negociou, tentou, mas falhou, a luta agora é inevitável",
-            "opcoes": {
-                "lutar contra o professor": " enfrentar o professor"
-            }
-        },
-        "lutar contra o professor": {
-            "titulo": "A batalha final",
-            "descricao": "A porradaria começa",
-            "opcoes": {
-            }
-        }
-    }
+#    cenarios ={
+#    "dia anterior": {
+#            "titulo": "Dia do descanso",
+#            "descricao" : "Você está na sua casa",
+#            "opcoes": {
+#                "Ir para a cozinha": "abrir a geladeira",    
+#                "Ir para a sala de estar": "enrolar e assistir TV"   
+#            }
+#        },
+#        "Ir para a cozinha":{
+#            "titulo":  "Pico da alegria",
+#            "descricao" : "Você encontrou um Big Mc, isso está no seu inventário agora",
+#            "opcoes": {
+#                "Ir para a sala de estar": " voltar para a sala de estar"
+#            }
+#        },
+#        "Ir para a sala de estar":{
+#            "titulo":  "Pico do sossego",
+#            "descricao" : "Você está assistindo TV e encontrou o Sleep Monster, \n"
+#            "se você perder o combate seu sono será horrivél e você acordará \n"
+#            "com menos HP pela manhã!",
+#            "opcoes": {
+#                "lutar": "combate",
+#                "fugir": "sair correndo"
+#            }
+#        },   
+#        "lutar": {
+#            "titulo": "A jornada",
+#            "descricao": "Você acordou e está chegando no Insper",
+#            "opcoes": {
+#                "biblioteca": " pegar um livro",
+#                "quarto andar": " pegar uma mala",
+#                "andar professor": " ir para o andar do professor"
+#            }
+#        },
+#        "fugir": {
+#            "titulo": "Tiro de 100 metros",
+#            "descricao": "Você correu e se escondeu no seu quarto, \n em cima da mesa você encotrou um energético! Agora isso está \n no seu inventário.",
+#            "opcoes": {
+#                "lutar": " enfrentar o SleepMonster"
+#                
+#            }
+#        },
+#        "biblioteca": {
+#            "titulo": "Pico da leitura",
+#            "descricao": "Você está na biblioteca e encontrou o Magias pythonianas \n isso lhe deu um ataque mais poderoso!",
+#            "opcoes": {
+#                "andar professor": " ir para o andar do professor",
+#                "quarto andar": " pegar uma mala"
+#            }
+#        },
+#        "quarto andar": {
+#            "titulo": "Pico de quem sabe",
+#            "descricao": "Você está no quarto andar e econtrou uma mala, dentro dela \n havia um gaytorade, TAN TAN TAN \n Você se deparou com a protetora Gio, ela não vai deixar \n você levar o gaytorade fácil assim",
+#            "opcoes": {
+#                "Lutar" : " combate",
+#                "Fugir" : " sair correndo"
+#            }
+#        },
+#        "Lutar": {
+#            "titulo": "O começo do fim",
+#            "descricao": "Depois do embate você se encontra no saguão",
+#            "opcoes": {
+#                "andar professor": "ir para o andar do professor",
+#                "biblioteca" : "pegar um livro"
+#            }
+#        },
+#        "Fugir": {
+#            "titulo": "O começo do fim",
+#            "descricao": "Depois do embate você se encontra no saguão, e felizmente você conseguiu correr rápido \n o suficiente para manter o seu gaytorade",
+#            "opcoes": {
+#                "andar professor": "ir para o andar do professor",
+#                "biblioteca" : "pegar um livro"    
+#            }
+#        },  
+#        "andar professor": {
+#            "titulo": "O conflito começa",
+#            "descricao": "Voce chegou ao andar da sala do seu professor, TAN TAN TAN...",
+#            "opcoes": {
+#                "lutar contra o professor": " enfrentar o professor",
+#                "encher linguiça": " pedir com jeitinho"
+#            }
+#        },
+#        "encher linguiça": {
+#            "titulo": "A discussão",
+#            "descricao": "Você negociou, tentou, mas falhou, a luta agora é inevitável",
+#            "opcoes": {
+#                "lutar contra o professor": " enfrentar o professor"
+#            }
+#        },
+#        "lutar contra o professor": {
+#            "titulo": "A batalha final",
+#            "descricao": "A porradaria começa",
+#            "opcoes": {
+#            }
+#        }
+#    }
+    cenarios = dicionario
  
     nome_cenario_atual = "dia anterior"
     return cenarios, nome_cenario_atual
