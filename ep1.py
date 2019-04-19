@@ -17,11 +17,11 @@ def carregar_cenarios():
 
 def define_valor_ataque(escolha):
             if escolha == 'Chutes mortais':
-                ataqueP1 = random.randint(20,35)
-            elif escolha == 'Mordidas sangrentas':
-                ataqueP1 = random.randint(25,60)
+                ataqueP1 = random.randint(25,45)
+            elif escolha == 'Mordidas radioativas':
+                ataqueP1 = random.randint(40,60)
             elif escolha == 'Socos em chamas':
-                ataqueP1 = random.randint(50,100)
+                ataqueP1 = random.randint(50,90)
             
             return ataqueP1
 
@@ -108,8 +108,8 @@ def main():
 # combate do SleepMonster
                 
         elif nome_cenario_atual == 'lutar':
-            vidaP1 = 100
-            ataque_SleepMonster = 51
+            vidaP1 = 500
+            ataque_SleepMonster = 251
             vida_SleepMonster = 100
             print()
             print('COMBATE')
@@ -132,7 +132,7 @@ def main():
                     vidaP1 += somaVida
 
                       
-            while vidaP1 > 50 and vida_SleepMonster > 0:
+            while vidaP1 > 250 and vida_SleepMonster > 0:
                     
                 print('---SEU TURNO---')
                 print('Seu HP:', vidaP1)
@@ -153,7 +153,7 @@ def main():
                     vidaP1 -= ataque_SleepMonster
                     print()
             
-            if vidaP1 <= 50:
+            if vidaP1 <= 250:
                 print('Você foi gravemente ferido e caiu em um sono cheio de pesadelos!'
                 ' Sua manhã será terrível')
             else:
@@ -163,9 +163,9 @@ def main():
                 
 # combate tiazinha da biblioteca
         
-        elif nome_cenario_atual == 'enfrenta-la':
-            ataque_tiazinha = random.randint(20,25)
-            vida_tiazinha = 130
+        elif nome_cenario_atual == 'enfrenta-lá':
+            ataque_tiazinha = random.randint(20,50)
+            vida_tiazinha = 100
             print()
             print('COMBATE')
             print()
@@ -209,7 +209,11 @@ def main():
             if vidaP1 <= 0:
                 print('GAME OVER')
             else:
-                print('Você venceu a batalha!')
+                print('Você venceu a batalha! Você tem os ataques Socos em chamas'
+                      'e Mordidas radioativas')
+                lista_ataque_P1.append('Mordidas radioativas')
+                lista_ataque_P1.append('Socos em chamas')
+                
         
 # easteregg da armadura
                     
@@ -218,11 +222,11 @@ def main():
                 print('UAU!! Você foi até seu armário e econtrou uma armadura!')
                 vidaP1 *= 2
   
-#combate com a protetora do gaytorade.
+#combate com o professor.
                     
-        elif nome_cenario_atual == 'andar professor':
-            ataque_Professor = random.randint(20,30)
-            vida_Professor = 150
+        elif nome_cenario_atual == 'lutar contra o professor':
+            ataque_Professor = random.randint(80,150)
+            vida_Professor = 1000
             print()
             print('COMBATE')
             print()
@@ -264,13 +268,16 @@ def main():
                     print()
                 
             if vidaP1 <= 0:
-                print('Game over')
+                print('GAME OVER')
             else:
-                print('Você venceu a batalha!')
+                print('Você conseguiu!!!! \n'
+                'o EP será adiado para sempre')
+
+#combate com a protetora do gaytorade.
             
         elif nome_cenario_atual == 'Lutar':
-            ataque_da_protetora = random.randint(20,30)
-            vida_da_protetora = 75
+            ataque_da_protetora = random.randint(30,50)
+            vida_da_protetora = 100
             print()
             print('COMBATE')
             print()
@@ -314,8 +321,7 @@ def main():
             if vidaP1 <= 0:
                 print('GAME OVER')
             else:
-                print('Você conseguiu!!!! \n'
-                'o EP será adiado para sempre')
+                print('Você venceu a batalha!')
     
             break
                                     

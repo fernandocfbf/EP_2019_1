@@ -17,7 +17,7 @@
         "Ir para a sala de estar":{
             "titulo" : "Pico do sossego",
             "descricao" : "Você está assistindo TV e encontrou o Sleep Monster, \n se você perder o combate seu sono será horrivél e você acordará \n com menos HP pela manhã!",
-            "opcoes": {
+            "opcoes" : {
                 "lutar" : " combate",
                 "fugir" : " sair correndo"
             }
@@ -25,7 +25,7 @@
         "lutar": {
             "titulo" : "A jornada",
             "descricao" : "Você acordou e está chegando no Insper",
-            "opcoes": {
+            "opcoes" : {
                 "biblioteca" : " ir para a biblioteca",
                 "quarto andar" : " ir para o quarto andar",
                 "andar professor" : " ir para o andar do professor"
@@ -43,7 +43,7 @@
             "titulo" : "Pico da leitura",
             "descricao" : "Você está na biblioteca e encontrou o livro Magias pythonianas \n isso pode lhe dar um ataque mais poderoso. Para consegui-lo enfrente a tiazinha da biblioteca!",
             "opcoes" : {
-                "enfreta-lá" : " combate",
+                "enfrenta-lá" : " combate",
                 "correr" : " correr para o saguão"
             }
         },
@@ -55,7 +55,6 @@
                 "andar professor" : " ir para o andar do professor"
             }
         },
-        
         "correr" : {
             "titulo" : "O começo do fim",
             "descricao" : "Você consegui fugir! Agora esta no saguão do insper",
@@ -65,7 +64,6 @@
                 "biblioteca" : " ir para a biblioteca"
             }
         },
-        
         "quarto andar" : {
             "titulo" : "Pico de quem sabe",
             "descricao" : "Você está no quarto andar e econtrou uma mala, dentro dela \n havia um gaytorade, TAN TAN TAN \n Você se deparou com a protetora Gio, ela não vai deixar \n você levar o gaytorade fácil assim",
@@ -85,7 +83,7 @@
             "titulo": "O momento do desespero",
             "descricao" : "Você fugiu e está escondido no banheiro",
             "opcoes" : {
-                "andar professor" : "ir para o andar do professor",    
+                "andar professor" : "ir para o andar do professor"    
             }
         },  
         "andar professor": {
@@ -110,3 +108,4 @@
             }
         }
     }
+    
