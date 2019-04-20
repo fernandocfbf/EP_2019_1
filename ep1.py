@@ -35,9 +35,12 @@ def define_valor_alimentos(escolha):
             return soma
 
 def deleta_inventário(resposta):
-    for e in range(len(inventario)-1):
-        if inventario[e] == resposta:
-            del inventario[e]
+    i = 0
+    while i < len(inventario):
+        if inventario[i] == resposta:
+            del inventario[i]
+        else:
+            i += 1
     return inventario
         
 
@@ -216,14 +219,16 @@ def main():
             else:
                 print('Você venceu a batalha!')
                 lista_ataque_P1.append('Mordidas radioativas')
-                lista_ataque_P1.append('Soco em chamas')
+                lista_ataque_P1.append('Socos em chamas')
                 print(lista_ataque_P1, 'Você liberou dois novos ataques')
         
 # easteregg da armadura
                     
         elif nome_cenario_atual == 'quarto andar':
             if 'chave' in inventario1:
-                print('Você achou um easteregg!! Você usou a chave que possuia no armário do quarto andar e econtrou uma armadura!')
+                print('Você achou um easteregg!! Você usou a chave que' 
+                ' possuia em um dos armários do quarto andar e econtrou uma armadura!'
+                ' Seu HP foi multiplicado por 2! ({0} x 2 = {1})'.format(vidaP1, vidaP1*2))
                 vidaP1 *= 2
   
 #combate com o professor.
@@ -317,13 +322,12 @@ def main():
                     'de dano'.format(ataqueP1))
                     print('---TURNO DO ADVERSÁRIO---')
                     vida_da_protetora -= ataqueP1
-                    if vida_da_protetora == 0:
-                        print('Seu HP:', vidaP1)
-                        print('Adversário HP:', vida_da_protetora)
-                        print('Você foi atingido com {0} pontos '
+                    print('Seu HP:', vidaP1)
+                    print('Adversário HP:', vida_da_protetora)
+                    print('Você foi atingido com {0} pontos '
                               'de dano '.format(ataque_da_protetora))
-                        vidaP1 -= ataque_da_protetora
-                        print()
+                    vidaP1 -= ataque_da_protetora
+                    print()
             
             if vidaP1 <= 0:
                 print('GAME OVER')
@@ -341,6 +345,9 @@ def main():
     # Programa principal.
 if __name__ == "__main__":
     main()
+    
+    
+    
     
     
     
