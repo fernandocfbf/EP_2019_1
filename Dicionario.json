@@ -33,7 +33,7 @@
         },
         "fugir" : {
             "titulo" : "Tiro de 100 metros",
-            "descricao" : "Você correu e se escondeu no seu quarto, \n em cima da mesa você encotrou um energético e uma chave! Agora isso está \n no seu inventário.",
+            "descricao" : "Você correu e se escondeu no seu quarto, \n em cima da mesa você encotrou dois energéticos e uma chave! Agora isso está \n no seu inventário.",
             "opcoes" : {
                 "lutar" : " enfrentar o SleepMonster"
                 
@@ -68,11 +68,11 @@
             "titulo" : "Pico de quem sabe",
             "descricao" : "Você está no quarto andar e econtrou uma mala, dentro dela \n havia um gaytorade, TAN TAN TAN \n Você se deparou com a protetora Gio, ela não vai deixar \n você levar o gaytorade fácil assim",
             "opcoes" : {
-                "Lutar" : " combate",
+                "Lutar contra Gio" : " combate",
                 "Fugir" : " sair correndo"
             }
         },
-        "Lutar" : {
+        "Lutar contra Gio" : {
             "titulo" : "O começo do fim",
             "descricao" : "Depois do embate você se encontra no saguão",
             "opcoes" : {
@@ -83,7 +83,7 @@
             "titulo": "O momento do desespero",
             "descricao" : "Você fugiu e está escondido no banheiro",
             "opcoes" : {
-                "andar professor" : "ir para o andar do professor"    
+                "andar professor" : "ir para o andar do professor"       
             }
         },  
         "andar professor": {
@@ -107,5 +107,4 @@
             "opcoes" : {
             }
         }
-    }
-    
+    }    

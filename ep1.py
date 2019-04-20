@@ -42,7 +42,7 @@ def deleta_inventário(resposta):
         
 
 
-lista_ataque_P1 = ['Chutes mortais']       
+lista_ataque_P1 = []       
 inventario = [] 
 inventario1 = []   
         
@@ -76,6 +76,7 @@ def main():
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
             
+            
         else:
 
             print('suas opções:')
@@ -88,6 +89,7 @@ def main():
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
+                
                 
                 
 # código para o inventário
@@ -108,6 +110,7 @@ def main():
 # combate do SleepMonster
                 
         elif nome_cenario_atual == 'lutar':
+            lista_ataque_P1.append('Chutes mortais')
             vidaP1 = 500
             ataque_SleepMonster = 251
             vida_SleepMonster = 100
@@ -125,6 +128,7 @@ def main():
                         print(e)
                     comendo = input('Digite o que deseja comer: ')
                     a = deleta_inventário(comendo)
+                    print(inventario)
                     if comendo == 'energético':
                         ataque_SleepMonster = random.randint(0,10)
                         
@@ -164,8 +168,8 @@ def main():
 # combate tiazinha da biblioteca
         
         elif nome_cenario_atual == 'enfrenta-lá':
-            ataque_tiazinha = random.randint(20,50)
-            vida_tiazinha = 100
+            ataque_tiazinha = random.randint(25,50)
+            vida_tiazinha = 200
             print()
             print('COMBATE')
             print()
@@ -208,18 +212,18 @@ def main():
             
             if vidaP1 <= 0:
                 print('GAME OVER')
+                game_over = True
             else:
-                print('Você venceu a batalha! Você tem os ataques Socos em chamas'
-                      'e Mordidas radioativas')
+                print('Você venceu a batalha!')
                 lista_ataque_P1.append('Mordidas radioativas')
-                lista_ataque_P1.append('Socos em chamas')
-                
+                lista_ataque_P1.append('Soco em chamas')
+                print(lista_ataque_P1, 'Você liberou dois novos ataques')
         
 # easteregg da armadura
                     
         elif nome_cenario_atual == 'quarto andar':
-            if 'chave' in inventário1:
-                print('UAU!! Você foi até seu armário e econtrou uma armadura!')
+            if 'chave' in inventario1:
+                print('Você achou um easteregg!! Você usou a chave que possuia no armário do quarto andar e econtrou uma armadura!')
                 vidaP1 *= 2
   
 #combate com o professor.
@@ -269,15 +273,17 @@ def main():
                 
             if vidaP1 <= 0:
                 print('GAME OVER')
+                game_over = True
             else:
                 print('Você conseguiu!!!! \n'
                 'o EP será adiado para sempre')
 
 #combate com a protetora do gaytorade.
             
-        elif nome_cenario_atual == 'Lutar':
-            ataque_da_protetora = random.randint(30,50)
-            vida_da_protetora = 100
+
+        elif nome_cenario_atual == 'Lutar contra Gio':
+            ataque_da_protetora = random.randint(30,80)
+            vida_da_protetora = 250
             print()
             print('COMBATE')
             print()
@@ -311,19 +317,21 @@ def main():
                     'de dano'.format(ataqueP1))
                     print('---TURNO DO ADVERSÁRIO---')
                     vida_da_protetora -= ataqueP1
-                    print('Seu HP:', vidaP1)
-                    print('Adversário HP:', vida_da_protetora)
-                    print('Você foi atingido com {0} pontos '
-                    'de dano '.format(ataque_da_protetora))
-                    vidaP1 -= ataque_da_protetora
-                    print()
+                    if vida_da_protetora == 0:
+                        print('Seu HP:', vidaP1)
+                        print('Adversário HP:', vida_da_protetora)
+                        print('Você foi atingido com {0} pontos '
+                              'de dano '.format(ataque_da_protetora))
+                        vidaP1 -= ataque_da_protetora
+                        print()
             
             if vidaP1 <= 0:
                 print('GAME OVER')
+                game_over = True
             else:
                 print('Você venceu a batalha!')
     
-            break
+          
                                     
         
 
