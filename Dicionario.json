@@ -33,7 +33,7 @@
         },
         "fugir" : {
             "titulo" : "Tiro de 100 metros",
-            "descricao" : "Você correu e se escondeu no seu quarto, \n em cima da mesa você encotrou dois energéticos e uma chave! Agora isso está \n no seu inventário.",
+            "descricao" : "Você correu e se escondeu no seu quarto, \n em cima da mesa você encotrou um energético e uma chave! Agora isso está \n no seu inventário.",
             "opcoes" : {
                 "lutar" : " enfrentar o SleepMonster"
                 
