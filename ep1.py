@@ -16,14 +16,14 @@ def carregar_cenarios():
     return cenarios, nome_cenario_atual
 
 def define_valor_ataque(escolha):
-            if escolha == 'Chutes mortais':
-                ataqueP1 = random.randint(25,45)
-            elif escolha == 'Mordidas radioativas':
-                ataqueP1 = random.randint(40,60)
-            elif escolha == 'Socos em chamas':
-                ataqueP1 = random.randint(50,90)
+    if escolha == 'Chutes mortais':
+        ataqueP1 = random.randint(25,45)
+    elif escolha == 'Mordidas radioativas':
+        ataqueP1 = random.randint(40,60)
+    elif escolha == 'Soco em chamas':
+        ataqueP1 = random.randint(50,90)
             
-            return ataqueP1
+    return ataqueP1
 
 def define_valor_alimentos(escolha):
             if escolha == 'Big MC':
@@ -45,7 +45,7 @@ def deleta_inventário(resposta):
         
 
 
-lista_ataque_P1 = []       
+lista_ataque_P1 = ['Chutes mortais']       
 inventario = [] 
 inventario1 = []   
         
@@ -82,7 +82,7 @@ def main():
             
         else:
 
-            print('suas opções:')
+            print('Suas opções:')
             for e,i in opcoes.items():
                 print('{0}:{1}'.format(e,i))
             escolha = input("Digite a sua escolha: ")
@@ -99,6 +99,7 @@ def main():
                 
         if nome_cenario_atual == 'Ir para a cozinha':
              inventario.append('Big MC')
+             print()
              
             
         elif nome_cenario_atual == 'fugir':
@@ -113,15 +114,12 @@ def main():
 # combate do SleepMonster
                 
         elif nome_cenario_atual == 'lutar':
-            lista_ataque_P1.append('Chutes mortais')
             vidaP1 = 500
             ataque_SleepMonster = 251
             vida_SleepMonster = 100
             print()
-            print('COMBATE')
-            print()
+            print('---COMBATE---')
             if len(inventario) > 0: 
-                print('SEU TURNO')
                 print()
                 comer = input('Antes de atacar, digite "sim" se '
                               'você deseja comer alguma coisa ou "não" para continuar: ')
@@ -131,12 +129,12 @@ def main():
                         print(e)
                     comendo = input('Digite o que deseja comer: ')
                     a = deleta_inventário(comendo)
-                    print(inventario)
                     if comendo == 'energético':
                         ataque_SleepMonster = random.randint(0,10)
                         
                     somaVida = define_valor_alimentos(comendo)
                     vidaP1 += somaVida
+                    print()
 
                       
             while vidaP1 > 250 and vida_SleepMonster > 0:
@@ -147,16 +145,20 @@ def main():
                 print('Seu ataques disponíveis são:')
                 for e in lista_ataque_P1:
                     print(e)
-                    ataques = input('Digite o ataque que deseja usar: ')
-                    ataqueP1 = define_valor_ataque(ataques)
-                    print('Você o atingiu com {0} pontos '
-                    'de dano'.format(ataqueP1))
+                ataques = input('Digite o ataque que deseja usar: ')
+                ataqueP1 = define_valor_ataque(ataques)
+                print('Você o atingiu com {0} pontos '
+                'de dano'.format(ataqueP1))
+                print()
+                vida_SleepMonster -= ataqueP1
+                if vida_SleepMonster <= 0:
+                    break
+                else:
                     print('---TURNO DO ADVERSÁRIO---')
-                    vida_SleepMonster -= ataqueP1
                     print('Seu HP:', vidaP1)
                     print('Adversário HP:', vida_SleepMonster)
                     print('Você foi atingido com {0} pontos '
-                    'de dano '.format(ataque_SleepMonster))
+                          'de dano '.format(ataque_SleepMonster))
                     vidaP1 -= ataque_SleepMonster
                     print()
             
@@ -173,6 +175,78 @@ def main():
         elif nome_cenario_atual == 'enfrenta-lá':
             ataque_tiazinha = random.randint(25,50)
             vida_tiazinha = 200
+            print()
+            print('COMBATE')
+            if len(inventario) > 0: 
+                print()
+                comer = input('Antes de atacar, digite "sim" se '
+                              'você deseja comer alguma coisa ou "não" para continuar: ')
+                if comer == 'sim':
+                    print('Você pode comer:')
+                    for e in inventario:
+                        print(e)
+                        comendo = input('Digite o que deseja comer: ')
+                        a = deleta_inventário(comendo)
+                            
+                    somaVida = define_valor_alimentos(comendo)
+                    vidaP1 += somaVida
+                    print()
+                    
+
+                      
+            while vidaP1 > 0 and vida_tiazinha > 0:
+                    
+                print('---SEU TURNO---')
+                print('Seu HP:', vidaP1)
+                print('Adversário HP:', vida_tiazinha)
+                print('Seu ataques disponíveis são:')
+                for e in lista_ataque_P1:
+                    print(e)
+                ataques = input('Digite o ataque que deseja usar: ')
+                ataqueP1 = define_valor_ataque(ataques)
+                print('Você o atingiu com {0} pontos '
+                'de dano'.format(ataqueP1))
+                vida_tiazinha -= ataqueP1
+                if vida_tiazinha <= 0:
+                    break
+                else:
+                    print('---TURNO DO ADVERSÁRIO---')
+                    vida_tiazinha -= ataqueP1
+                    print('Seu HP:', vidaP1)
+                    print('Adversário HP:', vida_tiazinha)
+                    print('Você foi atingido com {0} pontos '
+                          'de dano '.format(ataque_tiazinha))
+                    vidaP1 -= ataque_tiazinha
+                    print()
+            
+            if vidaP1 <= 0:
+                print('GAME OVER')
+                game_over = True
+            else:
+                print('Você venceu a batalha!')
+                lista_ataque_P1.append('Mordidas radioativas')
+                lista_ataque_P1.append('Soco em chamas')
+                print('Você liberou dois novos ataques.')
+                print()
+        
+# easteregg da armadura
+                    
+        elif nome_cenario_atual == 'quarto andar':
+            if 'chave' in inventario1:
+                print()
+                print('EASTER EGG - Pico de quem sabe')
+                print('------------------------------')
+                print('Você achou um easter egg!! Você usou a chave que' 
+                ' possuia em um dos armários do quarto andar e econtrou uma armadura!'
+                ' Seu HP foi multiplicado por 2! ({0} x 2 = {1})'.format(vidaP1, vidaP1*2))
+                vidaP1 *= 2
+                
+#combate com a protetora do gaytorade.
+            
+
+        elif nome_cenario_atual == 'Lutar contra Gio':
+            ataque_da_protetora = random.randint(30,40)
+            vida_da_protetora = 250
             print()
             print('COMBATE')
             print()
@@ -192,44 +266,37 @@ def main():
                     vidaP1 += somaVida
 
                       
-            while vidaP1 > 0 and vida_tiazinha > 0:
+            while vidaP1 > 0 and vida_da_protetora > 0:
                     
                 print('---SEU TURNO---')
                 print('Seu HP:', vidaP1)
-                print('Adversário HP:', vida_tiazinha)
+                print('Adversário HP:', vida_da_protetora)
                 print('Seu ataques disponíveis são:')
                 for e in lista_ataque_P1:
                     print(e)
-                    ataques = input('Digite o ataque que deseja usar: ')
-                    ataqueP1 = define_valor_ataque(ataques)
-                    print('Você o atingiu com {0} pontos '
-                    'de dano'.format(ataqueP1))
+                ataques = input('Digite o ataque que deseja usar: ')
+                ataqueP1 = define_valor_ataque(ataques)
+                print('Você o atingiu com {0} pontos '
+                'de dano'.format(ataqueP1))
+                vida_da_protetora -= ataqueP1
+                if vida_da_protetora <= 0:
+                    break
+                else:
                     print('---TURNO DO ADVERSÁRIO---')
-                    vida_tiazinha -= ataqueP1
+                    vida_da_protetora -= ataqueP1
                     print('Seu HP:', vidaP1)
-                    print('Adversário HP:', vida_tiazinha)
+                    print('Adversário HP:', vida_da_protetora)
                     print('Você foi atingido com {0} pontos '
-                    'de dano '.format(ataque_tiazinha))
-                    vidaP1 -= ataque_tiazinha
+                          'de dano '.format(ataque_da_protetora))
+                    vidaP1 -= ataque_da_protetora
                     print()
             
             if vidaP1 <= 0:
                 print('GAME OVER')
                 game_over = True
             else:
-                print('Você venceu a batalha!')
-                lista_ataque_P1.append('Mordidas radioativas')
-                lista_ataque_P1.append('Socos em chamas')
-                print(lista_ataque_P1, 'Você liberou dois novos ataques')
-        
-# easteregg da armadura
-                    
-        elif nome_cenario_atual == 'quarto andar':
-            if 'chave' in inventario1:
-                print('Você achou um easteregg!! Você usou a chave que' 
-                ' possuia em um dos armários do quarto andar e econtrou uma armadura!'
-                ' Seu HP foi multiplicado por 2! ({0} x 2 = {1})'.format(vidaP1, vidaP1*2))
-                vidaP1 *= 2
+                print('Você venceu a batalha! Agora tem um gaytorade em seu inventário.')
+                inventario.append('gaytorade')
   
 #combate com o professor.
                     
@@ -263,16 +330,20 @@ def main():
                 print('Seu ataques disponíveis são:')
                 for e in lista_ataque_P1:
                     print(e)
-                    ataques = input('Digite o ataque que deseja usar: ')
-                    ataqueP1 = define_valor_ataque(ataques)
-                    print('Você o atingiu com {0} pontos '
-                    'de dano'.format(ataqueP1))
+                ataques = input('Digite o ataque que deseja usar: ')
+                ataqueP1 = define_valor_ataque(ataques)
+                print('Você o atingiu com {0} pontos '
+                'de dano'.format(ataqueP1))
+                vida_Professor -= ataqueP1
+                if vida_Professor <= 0:
+                    break
+                else:
                     print('---TURNO DO ADVERSÁRIO---')
                     vida_Professor -= ataqueP1
                     print('Seu HP:', vidaP1)
                     print('Adversário HP:', vida_Professor)
                     print('Você foi atingido com {0} pontos '
-                    'de dano '.format(ataque_Professor))
+                          'de dano '.format(ataque_Professor))
                     vidaP1 -= ataque_Professor
                     print()
                 
@@ -282,70 +353,23 @@ def main():
             else:
                 print('Você conseguiu!!!! \n'
                 'o EP será adiado para sempre')
+                break
 
-#combate com a protetora do gaytorade.
-            
 
-        elif nome_cenario_atual == 'Lutar contra Gio':
-            ataque_da_protetora = random.randint(30,80)
-            vida_da_protetora = 250
-            print()
-            print('COMBATE')
-            print()
-            if len(inventario) > 0: 
-                print('SEU TURNO')
-                print()
-                comer = input('Antes de atacar, digite "sim" se '
-                              'você deseja comer alguma coisa ou "não" para continuar: ')
-                if comer == 'sim':
-                    print('Você pode comer:')
-                    for e in inventario:
-                        print(e)
-                        comendo = input('Digite o que deseja comer: ')
-                        a = deleta_inventário(comendo)
-                            
-                    somaVida = define_valor_alimentos(comendo)
-                    vidaP1 += somaVida
-
-                      
-            while vidaP1 > 0 and vida_da_protetora > 0:
-                    
-                print('---SEU TURNO---')
-                print('Seu HP:', vidaP1)
-                print('Adversário HP:', vida_da_protetora)
-                print('Seu ataques disponíveis são:')
-                for e in lista_ataque_P1:
-                    print(e)
-                    ataques = input('Digite o ataque que deseja usar: ')
-                    ataqueP1 = define_valor_ataque(ataques)
-                    print('Você o atingiu com {0} pontos '
-                    'de dano'.format(ataqueP1))
-                    print('---TURNO DO ADVERSÁRIO---')
-                    vida_da_protetora -= ataqueP1
-                    print('Seu HP:', vidaP1)
-                    print('Adversário HP:', vida_da_protetora)
-                    print('Você foi atingido com {0} pontos '
-                              'de dano '.format(ataque_da_protetora))
-                    vidaP1 -= ataque_da_protetora
-                    print()
-            
-            if vidaP1 <= 0:
-                print('GAME OVER')
-                game_over = True
-            else:
-                print('Você venceu a batalha!')
     
           
                                     
         
 
-    print("Você morreu!")
+    if game_over == True:
+        print("Você morreu!")
+    else:
+        print('FIM DO JOGO')
 
 
     # Programa principal.
 if __name__ == "__main__":
     main()
-    
     
     
     
